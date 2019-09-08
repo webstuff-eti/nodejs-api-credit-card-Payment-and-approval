@@ -18,8 +18,7 @@ module.exports = function(app) {
         res.status(400).send(errors);
         return;
       }
-      //cartao.status = 'AUTORIZADO';
-       cartao.status = 'NAO-AUTORIZADO';
+      cartao.status = 'NAO-AUTORIZADO';
 	   
       var response = {
         dados_do_cartao: cartao,

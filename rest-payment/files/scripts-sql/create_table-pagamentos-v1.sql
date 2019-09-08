@@ -25,4 +25,3 @@ CREATE TABLE `pagamentos` (
 */
 
 SELECT * FROM payfast.pagamentos;
-

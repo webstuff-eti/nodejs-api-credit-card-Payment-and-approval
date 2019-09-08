@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "ee1ef94e-a573-4f66-bcdd-e89b15f8f874",
+		"name": "NodeJS - API NODE - Gateway de pagamento",
+		"description": "Estudos de NodeJS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Acessando Aplicação  - Retorno OK",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Origin",
+						"type": "text",
+						"value": "http://localhost:3000/pagamentos"
+					},
+					{
+						"key": "",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/pagamentos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pagamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criando pagamento com forma de pagamento",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "http://localhost:3000/pagamentos/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"pagamento\":{\n    \"forma_de_pagamento\":\"cartao\",\n    \"valor\":98.53 ,\n    \"moeda\":\"USD\",\n    \"descricao\":\"criando um pagamento\"\n  },\n  \"cartao\":{\n    \"numero\":1234123412341234,\n    \"bandeira\":\"visa\",\n    \"ano_de_expiracao\":2016,\n    \"mes_de_expiracao\":12,\n    \"cvv\":159\n  }\n}\n\n\n"
+				},
+				"url": {
+					"raw": "http://localhost:3000/pagamentos/pagamento",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pagamentos",
+						"pagamento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Excluindo pagamento",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Origin",
+						"type": "text",
+						"value": "http://localhost:3000/pagamentos/"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/pagamentos/pagamento/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pagamentos",
+						"pagamento",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterando pagamento",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Origin",
+						"type": "text",
+						"value": " http://localhost:3000/pagamentos/pagamento/",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"forma_de_pagamento\":\"cartao\",\n\t\"valor\":11.10,\n\t\"moeda\":\"USD\",\n    \"descricao\":\"Alterando um pagamento para Tiago Tibães\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/put/pagamentos/pagamento/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"put",
+						"pagamentos",
+						"pagamento",
+						"11"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
