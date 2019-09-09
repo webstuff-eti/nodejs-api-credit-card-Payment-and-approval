@@ -40,7 +40,7 @@ module.exports = function(app){
           res.status(500).send(erro);
           return;
         }
-        console.log('pagamento criado');
+        console.log('pagamento alterado');
         res.send(pagamento);
     });
 

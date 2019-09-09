@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ee1ef94e-a573-4f66-bcdd-e89b15f8f874",
+		"_postman_id": "ba81f012-d24f-4686-926c-838e5f8ec47d",
 		"name": "NodeJS - API NODE - Gateway de pagamento",
 		"description": "Estudos de NodeJS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -43,6 +43,48 @@
 					"port": "3000",
 					"path": [
 						"pagamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Acessando Aplicação  - Upload OK",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Origin",
+						"type": "text",
+						"value": "http://localhost:3000/upload"
+					},
+					{
+						"key": "",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"upload"
 					]
 				}
 			},
@@ -92,6 +134,98 @@
 			"response": []
 		},
 		{
+			"name": "Calcula Prazo",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Origin",
+						"type": "text",
+						"value": "http://localhost:3000/pagamentos/"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nCdServico\":\"04014\",\n\t\"sCepOrigem\":\"04110120\",\n\t\"sCepDestino\":\"37540000\"\n}\n\n\n"
+				},
+				"url": {
+					"raw": "http://localhost:3000/correios/calculo-prazo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"correios",
+						"calculo-prazo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Realizando upload de imagens",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json, text/plain, */*",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/octet-stream"
+					},
+					{
+						"key": "Origin",
+						"type": "text",
+						"value": "http://localhost:3000/upload/imagem"
+					},
+					{
+						"key": "filename",
+						"value": "perfiltiago.jpeg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "http://localhost:3000/upload/imagem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"upload",
+						"imagem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Excluindo pagamento",
 			"request": {
 				"auth": {
@@ -120,7 +254,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:3000/pagamentos/pagamento/1",
+					"raw": "http://localhost:3000/pagamentos/pagamento/66",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -129,7 +263,7 @@
 					"path": [
 						"pagamentos",
 						"pagamento",
-						"1"
+						"66"
 					]
 				}
 			},
@@ -162,17 +296,16 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"forma_de_pagamento\":\"cartao\",\n\t\"valor\":11.10,\n\t\"moeda\":\"USD\",\n    \"descricao\":\"Alterando um pagamento para Tiago Tibães\"\n}"
+					"raw": "{\n  \"pagamento\":{\n    \"forma_de_pagamento\":\"cartao\",\n    \"valor\":98.53 ,\n    \"moeda\":\"USD\",\n    \"descricao\":\"criando um pagamento\"\n  },\n  \"cartao\":{\n    \"numero\":1234123412341234,\n    \"bandeira\":\"visa\",\n    \"ano_de_expiracao\":2016,\n    \"mes_de_expiracao\":12,\n    \"cvv\":159\n  }\n}"
 				},
 				"url": {
-					"raw": "http://localhost:3000/put/pagamentos/pagamento/11",
+					"raw": "http://localhost:3000/pagamentos/pagamento/11",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"put",
 						"pagamentos",
 						"pagamento",
 						"11"
