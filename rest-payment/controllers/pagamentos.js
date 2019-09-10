@@ -80,6 +80,18 @@ module.exports = function(app){
         pagamento.id = resultado.insertId;
         console.log('pagamento criado');
 
+        //Impementação da busca no Cache
+        var memcachedClient = app.cache.memcachedClient();
+
+        memcachedClient.set('pagamento-' + pagamento.id, pagamento, 60000, 
+          function(erro){
+            if(erro){
+              console.log('Erro ao setar pagamento no cache:' + erro);
+            } else {
+              console.log('Nova chave adicionada oa cache: pagamento-' + pagamento.id);
+            }
+        });
+
         if (pagamento.forma_de_pagamento == 'cartao'){
           
           var cartao = req.body["cartao"];
@@ -171,6 +183,48 @@ module.exports = function(app){
     });
 
   }); //Finaliza POST do pagamento
+
+
+  //Implementação do cache
+  app.get('/pagamentos/pagamento/:id', function(req, res){
+    var id = req.params.id;
+    console.log('Consultando pagamento: ' + id);
+
+    //Impementação da busca no Cache
+    var memcachedClient = app.cache.memcachedClient();
+
+    memcachedClient.get('pagamento-' + id, function(erro, retorno){
+      
+      if(erro || !retorno){
+        console.log('MISS - chave não encontrada');
+
+        var connection = app.persistencia.connectionFactory();
+        var pagamentoDao = new app.persistencia.PagamentoDao(connection);
+
+        pagamentoDao.buscaPorId(id, function(erro, resultado){
+
+          if(erro){
+            console.log('Erro ao consultar no banco:' + erro);
+            res.status(500).send(erro);
+            return;
+          } else {
+            console.log('Pagamento encontrado:' + JSON.stringify(resultado));
+            res.json(resultado);
+            return;
+          }
+
+        });  
+      } else{
+        console.log('HIT - Valor consultado no cache: ' + JSON.stringify(retorno));
+        res.json(retorno);
+        return;
+      }
+    });
+
+      
+
+
+  });
 
 
 

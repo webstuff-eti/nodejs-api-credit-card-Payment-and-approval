@@ -15,6 +15,7 @@ module.exports = function(){
    .include('controllers')
    .then('persistencia')
    .then('servicos')
+   .then('cache')
    .into(app);
 
   return app;
