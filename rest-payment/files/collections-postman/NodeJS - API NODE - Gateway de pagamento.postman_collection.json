@@ -49,6 +49,50 @@
 			"response": []
 		},
 		{
+			"name": "Busca pagamento por ID",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Origin",
+						"type": "text",
+						"value": "http://localhost:3000/pagamentos"
+					},
+					{
+						"key": "",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/pagamentos/pagamento/68",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pagamentos",
+						"pagamento",
+						"68"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Acessando Aplicação  - Upload OK",
 			"request": {
 				"auth": {
@@ -116,7 +160,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"pagamento\":{\n    \"forma_de_pagamento\":\"cartao\",\n    \"valor\":98.53 ,\n    \"moeda\":\"USD\",\n    \"descricao\":\"criando um pagamento\"\n  },\n  \"cartao\":{\n    \"numero\":1234123412341234,\n    \"bandeira\":\"visa\",\n    \"ano_de_expiracao\":2016,\n    \"mes_de_expiracao\":12,\n    \"cvv\":159\n  }\n}\n\n\n"
+					"raw": "{\n  \"pagamento\":{\n    \"forma_de_pagamento\":\"cartao\",\n    \"valor\":93.53 ,\n    \"moeda\":\"USD\",\n    \"descricao\":\"criando um pagamento - teste de cache master\"\n  },\n  \"cartao\":{\n    \"numero\":1234123412341234,\n    \"bandeira\":\"visa\",\n    \"ano_de_expiracao\":2019,\n    \"mes_de_expiracao\":12,\n    \"cvv\":160\n  }\n}\n\n\n"
 				},
 				"url": {
 					"raw": "http://localhost:3000/pagamentos/pagamento",
