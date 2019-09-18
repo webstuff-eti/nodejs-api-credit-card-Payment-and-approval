@@ -103,6 +103,10 @@ echo "stats settings" | nc localhost 11211
 # Kill Process by PID - Tests Clusters | SCALABILITY:
 > kill -9 process_number
 
+#WIth Clusters
+> nodemon cluster.js
+
+
  
 
 
