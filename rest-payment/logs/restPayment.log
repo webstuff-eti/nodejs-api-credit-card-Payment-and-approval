@@ -1,0 +1,5 @@
+{"level":"info","message":"::1 - - [18/Sep/2019:13:28:47 +0000] \"GET /teste HTTP/1.1\" 404 144\n","timestamp":"2019-09-18T13:28:47.871Z"}
+{"level":"info","message":"::1 - - [18/Sep/2019:13:28:54 +0000] \"GET /pagamentos HTTP/1.1\" 500 3432\n","timestamp":"2019-09-18T13:28:54.913Z"}
+{"level":"info","message":"Recebida requisicao de teste na porta 3000.","timestamp":"2019-09-18T13:29:30.076Z"}
+{"level":"info","message":"::1 - - [18/Sep/2019:13:29:30 +0000] \"GET /pagamentos HTTP/1.1\" 200 3\n","timestamp":"2019-09-18T13:29:30.083Z"}
+{"level":"info","message":"::1 - - [18/Sep/2019:13:29:30 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150\n","timestamp":"2019-09-18T13:29:30.102Z"}
