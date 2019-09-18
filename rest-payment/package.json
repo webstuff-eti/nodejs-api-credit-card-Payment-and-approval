@@ -2,7 +2,7 @@
   "name": "rest-payment",
   "version": "1.0.0",
   "description": "gateway de pagamentos utilizando recursos http.",
-  "main": "index.js",
+  "main": "cluster.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --inspect ./index.js"
